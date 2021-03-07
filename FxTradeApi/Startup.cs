@@ -11,6 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FxTradeApi.Data;
+using FxTradeApi.Models;
+using FxTradeApi.Repository;
+using FxTradeApi.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace FxTradeApi
@@ -29,6 +32,7 @@ namespace FxTradeApi
         {
             services.AddDbContext<ApplicationDbContext>
      (options=> options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<INationalParkRepository, NationalParkRepository>();
             services.AddControllers();
         }
 
