@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FxTradeApi.Data;
 using FxTradeApi.Models;
+using FxTradeApi.ParkyMapper;
 using FxTradeApi.Repository;
 using FxTradeApi.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,7 @@ namespace FxTradeApi
             services.AddDbContext<ApplicationDbContext>
      (options=> options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<INationalParkRepository, NationalParkRepository>();
+            services.AddAutoMapper(typeof(ParkyMapping));
             services.AddControllers();
         }
 
